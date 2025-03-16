@@ -1,0 +1,206 @@
+/* Reset default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-cream {
+  background-color: #e1e0ce;
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.gradient-background {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    -45deg,
+    #ff0f7b,
+    #f89b29,
+    #4b6cb7,
+    #182848,
+    #2000b1,
+    #ff0f7b
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  opacity: 0;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --intensity: 0;
+  mask-image: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    black calc(0% + (var(--intensity) * 100%)),
+    transparent calc(30% + (var(--intensity) * 100%))
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    black calc(0% + (var(--intensity) * 100%)),
+    transparent calc(30% + (var(--intensity) * 100%))
+  );
+  opacity: 0.8;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-outline {
+  z-index: 1;
+  font-size: min(15vw, 12vh);
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  color: transparent;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  position: relative;
+  width: 90vw;
+  text-align: center;
+}
+
+.background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --intensity: 0;
+  filter: brightness(1.2) contrast(1.1);
+  mask-image: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    black calc(0% + (var(--intensity) * 100%)),
+    transparent calc(30% + (var(--intensity) * 100%))
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    black calc(0% + (var(--intensity) * 100%)),
+    transparent calc(30% + (var(--intensity) * 100%))
+  );
+  transform: scale(1.01); /* Prevents edge artifacts */
+  will-change: mask-image, -webkit-mask-image;
+  image-rendering: high-quality;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.text-outline {
+  text-align: left;
+}
+
+.text-outline::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-stroke: 2px transparent;
+  background: linear-gradient(
+    90deg,
+    rgb(149, 45, 123) 0%,
+    rgb(70, 40, 147) 16.66%,
+    rgb(25, 25, 158) 33.33%,
+    rgb(53, 89, 133) 50%,
+    rgb(91, 31, 139) 66.66%,
+    rgb(144, 49, 74) 83.33%,
+    rgb(149, 45, 123) 100%
+  );
+  background-size: 600% 100%;
+  animation: moveGradient 20s linear infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: var(--intensity, 0.8);
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50% }
+  100% { background-position: -300% 50% }
+}
+
+
+@media (max-width: 768px) {
+  .text-outline {
+    font-size: min(12vw, 8vh);
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-outline {
+    font-size: min(10vw, 6vh);
+    letter-spacing: 0.03em;
+  }
+}
